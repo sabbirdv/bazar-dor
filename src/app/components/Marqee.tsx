@@ -18,7 +18,7 @@ const Marqee = async () => {
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products', { cache: 'force-cache' });
     const data = await res.json();
     return (
-        <div className="border-y border-gray-200 py-1" >
+        <div className="border-y bg-white border-gray-200 py-1" >
             <MarqueeText
                 duration={15}
                 pauseOnHover={true}

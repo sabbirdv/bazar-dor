@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import NavLink from "./NavLink";
-import Marqee from "./Marqee";
 import DateBn from "./Date";
 
 const Header = () => {
 
     return (
-        <header className="w-full px-4 sticky top-0 bg-white ">
+        <header className="w-full px-4 bg-white sticky top-0  z-100 ">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <Link href={'/'}>
                     <div className="flex items-center gap-3 py-4">
@@ -31,7 +30,6 @@ const Header = () => {
                 </div>
             </div>
             <NavLink />
-            <Marqee />
         </header>
     );
 };
