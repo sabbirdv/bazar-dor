@@ -17,7 +17,7 @@ const Header = () => {
                         </div>
                         <div className="flex flex-col justify-center ">
                             <h1 className="font-bold text-xl text-green-600">বাজার দর</h1>
-                            <span className="text-gray-500 text-sm"><DateBn/></span>
+                            <div className="text-gray-500 text-sm "><DateBn/></div>
                         </div>
                     </div>
                 </Link>
