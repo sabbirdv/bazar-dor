@@ -1,9 +1,10 @@
 
-
-const DateBn = () => {
-    const date = new Date().toLocaleString('bn-BD', {
+const date = new Date().toLocaleString('bn-BD', {
         dateStyle: 'full',
     });
+    
+const DateBn = () => {
+    
 
     return (
         <div>
