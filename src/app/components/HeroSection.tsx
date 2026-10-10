@@ -8,7 +8,7 @@ const HeroSection = () => {
     return (
         <div className="w-full mt-5">
             <div className="max-w-7xl mx-auto px-4 rounded-xl bg-white border border-gray-200 ">
-                <div className="w-full px-5 pt-12 pb-20 flex flex-wrap justify-center md:justify-between items-center max-md:text-center">
+                <div className="w-full px-5 pt-12 pb-20 flex max-md:flex-wrap justify-center md:justify-between items-center max-md:text-center">
                     <div className="max-w-140">
                         <div className="w-fit px-4 py-1 max-md:mx-auto rounded-full border border-green-400 bg-green-200 text-green-700 text-nowrap "><DateBn/></div>
                         <h2 className="text-4xl font-bold mb-4 mt-2 ">আজকের বাজারের দাম এক নজরে</h2>

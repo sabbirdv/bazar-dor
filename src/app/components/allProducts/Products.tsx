@@ -22,9 +22,9 @@ const Products = () => {
 
     return (
         <div>
-            <div className='mb-5 '>
-                <h3 className="text-2xl font-bold mb-2 scroll-mt-50" id='allProducts'>সব পণ্য</h3>
-                <div className='flex flex-wrap text-nowrap justify-between items-center gap-10'>
+            <div className='mb-5'>
+                <h3 className="text-2xl font-bold mb-2 scroll-mt-50 max-sm:text-center" id='allProducts'>সব পণ্য</h3>
+                <div className='flex max-sm:flex-col text-nowrap justify-between items-center gap-4'>
                     <p className='text-gray-500 text-sm'>মোট {sortedProducts.length}টি পণ্য দেখানো হচ্ছে</p>
                     <div className='flex gap-3 justify-center items-center'>
                         <span className='text-gray-500 text-sm'>সাজান</span>
@@ -41,7 +41,7 @@ const Products = () => {
                 </div>
             </div>
             {
-                sortedProducts.length < 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-between items-center">
+                sortedProducts.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-between items-center">
                                     {
                                         sortedProducts.map((u) =>
                                             <ProductCard key={u.id} data={u} />)
@@ -49,7 +49,7 @@ const Products = () => {
                                 </div> 
                                 : 
                                 <div>
-                                    <h4 className='text-xl font-bold text-red-600 my-20 text-center'>Faild to lode data!</h4>
+                                    <h4 className='text-xl font-bold text-gray-200 my-20 text-center'>Loading data...</h4>
                                 </div>
             }
 

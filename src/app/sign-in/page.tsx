@@ -36,8 +36,8 @@ setErrorMessage("");
     };
 
 return (
-    <div className="w-full h-[85vh]">
-        <div className="max-w-7xl mx-auto px-4 pt-20 flex flex-col justify-center items-center">
+    <div className="w-full h-[85vh] px-4">
+        <div className="max-w-7xl mx-auto  pt-20 flex flex-col justify-center items-center">
             <div className="pb-6">
                 <h2 className="text-3xl text-black font-bold text-center pb-2">সাইন ইন</h2>
                 <p className="text-gray-500 text-sm">বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>

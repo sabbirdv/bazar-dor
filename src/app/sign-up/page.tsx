@@ -30,7 +30,7 @@ const SignUpPage = () => {
             }
     };
     return (
-        <div className="w-full h-[85vh]">
+        <div className="w-full h-[85vh] px-4">
             <div className="max-w-7xl mx-auto px-4 pt-10 flex flex-col justify-center items-center">
                 <div className="pb-6">
                     <h2 className="text-3xl text-black font-bold text-center pb-2">অ্যাকাউন্ট তৈরি করুন</h2>
