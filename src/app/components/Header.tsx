@@ -3,7 +3,7 @@
 import Link from "next/link";
 import NavLink from "./NavLink";
 import DateBn from "./Date";
-import UserBtns from "./userInfo/UserBtns";
+import UserBtns from "../profile/UserBtns";
 
 const Header = () => {
 

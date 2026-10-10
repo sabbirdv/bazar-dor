@@ -1,10 +1,13 @@
 'use client'
 import { ProductContex } from '@/app/contex/ProductContex';
 import ProductCard from '@/app/productCards/ProductCard';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 const Products = () => {
-    const { productData, sortAllProducts, setSortAllProducts } = useContext(ProductContex)
+
+    const { productData } = useContext(ProductContex)
+
+    const [sortAllProducts, setSortAllProducts] = useState("default");
 
     const shortProduct = () => {
         const sorted=[...productData]
