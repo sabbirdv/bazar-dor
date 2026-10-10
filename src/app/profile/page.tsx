@@ -1,13 +1,14 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const UserProfile = () => {
-    const {data : session} = authClient.useSession();
+    const { data: session } = authClient.useSession();
     const user = session?.user
-    const handleSigOut= async ()=>{
-            authClient.signOut()
-        }
+    const handleSigOut = async () => {
+        authClient.signOut()
+    }
 
 
     return (
@@ -17,7 +18,11 @@ const UserProfile = () => {
                 <p className=" text-gray-500 mb-5">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
                 <div className="flex justify-between items-center bg-white border border-gray-200 rounded-xl p-5 mb-4">
                     <div className="flex items-center gap-3">
-                        <div className="size-14 bg-gray-100 rounded-xl"></div>
+                        {user?.image ? (
+                            <Image src={user.image} height={80} width={80} alt="profile" className="rounded-full object-cover"
+                            />
+                            ) : ( <div className="h-20 w-20 bg-gray-200 rounded-full" />)
+                        }
                         <div>
                             <h3 className="font-bold text-gray-800 capitalize">{user?.name}</h3>
                             <p className="text-sm text-gray-500">{user?.email}</p>

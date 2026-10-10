@@ -29,7 +29,7 @@ const SortCategoris = ({ data }: { data: IproductType[] }) => {
                     <div className='flex flex-wrap text-nowrap justify-between items-center'>
                         <div>
                             <h3 className="text-2xl font-bold mb-2 scroll-mt-50" id='allProducts'>সব পণ্য</h3>
-                            <p>টি পণ্যের আজকের দাম ও পরিবর্তন</p>
+                            <p>{sortedProducts.length}টি পণ্যের আজকের দাম ও পরিবর্তন</p>
                         </div>
                         <div className='flex gap-3 justify-center items-center'>
                             <span className='text-gray-500 text-sm'>সাজান</span>

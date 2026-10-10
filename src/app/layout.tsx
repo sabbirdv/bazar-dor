@@ -23,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="light"
       className={`${notoSerifBengali.className} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#FDFFF7]">
+      <body className="min-h-screen flex flex-col bg-[#FDFFF7]">
         <ProductProvider>
           <Header/>
           <Marqee />
