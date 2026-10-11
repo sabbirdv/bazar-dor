@@ -2,6 +2,7 @@
 import type { IproductType } from "@/app/types/IProductType";
 import SortCategories from "./SortCategories"
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 
 
@@ -17,7 +18,8 @@ const CategoriesDetails = async ({ params }: { params: Promise<{ categoriesId: s
     }
 
     return (
-        <div>
+        <div className="min-h-full">
+            <Suspense fallback></Suspense>
             <SortCategories data={categoriesData}/>
         </div>
     )

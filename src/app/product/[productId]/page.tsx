@@ -5,7 +5,7 @@ import { Suspense } from 'react';
     const { productId } = await params
 
     return (
-        <div>
+        <div className='min-h-full'>
             <Suspense fallback={<div>লোড হচ্ছে...</div>}>
                 <ProductDetails productId={productId} />
             </Suspense>
