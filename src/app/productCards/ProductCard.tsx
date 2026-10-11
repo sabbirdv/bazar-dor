@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ProductCard = ({ data }: { data: IproductType }) => {
     return (
-        <Link href={`/product/${data.id}`}>
+        <Link href={`/product/${data.slug}`}>
             <div className="w-full max-w-100 rounded-2xl border border-gray-300 hover:border-green-600 bg-white p-4">
                 <div className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-3xl">

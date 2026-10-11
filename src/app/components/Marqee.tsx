@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import MarqueeText from "react-marquee-text"
 import "react-marquee-text/dist/styles.css"
@@ -29,13 +30,13 @@ const Marqee = async () => {
                 {
                     data.map((m: Imarqee) => {
                         
-                        return <span key={m.id}>
+                        return <Link href={`/product/${m.id}`} key={m.id}>
                             <span className="px-2 flex items-center">{m.categoryIcon} {m.nameBn} {m.today} টাকা/{  m.unit === 'kg' ? 'কেজি' : m.unit === 'litre' ? 'লিটার' : m.unit === 'dozen' ? 'ডজন' : 'পিস'}
                                 {
                                     m.change.dir === 'down' ? <span className="flex items-center gap-0.5 ps-0.5 text-green-700"><TiArrowSortedDown />
                                     {m.change.pct}%</span> : <span className="flex items-center gap-0.5 ps-0.5 text-red-700"><TiArrowSortedUp /> {m.change.pct}%
                                     </span> }</span>
-                                    </span> 
+                                    </Link> 
                             })
                 }
             </MarqueeText>
