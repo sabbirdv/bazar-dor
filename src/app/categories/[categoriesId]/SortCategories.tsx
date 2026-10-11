@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 
 
-const SortCategoris = ({ data }: { data: IproductType[] }) => {
+const SortCategories = ({ data }: { data: IproductType[] }) => {
 
     const [sortAllProducts, setSortAllProducts] = useState("default");
     const shortProduct = () => {
@@ -63,4 +63,4 @@ const SortCategoris = ({ data }: { data: IproductType[] }) => {
     );
 };
 
-export default SortCategoris;
+export default SortCategories;

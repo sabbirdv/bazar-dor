@@ -30,16 +30,12 @@ const Marqee = async () => {
                     data.map((m: Imarqee) => {
                         
                         return <span key={m.id}>
-                            <span className="px-2 flex items-center">{m.categoryIcon} {m.nameBn} {m.today} টাকা/{
-                                m.unit === 'kg' ? 'কেজি'
-                                : m.unit === 'litre' ? 'লিটার'
-                                : m.unit === 'dozen' ? 'ডজন'
-                                : 'পিস'
-                            }
-                                {m.change.dir === 'down' ? <span className="flex items-center gap-0.5 ps-0.5 text-green-700"><TiArrowSortedDown />
-                                {m.change.pct}%</span> : <span className="flex items-center gap-0.5 ps-0.5 text-red-700"><TiArrowSortedUp /> {m.change.pct}%
-                                </span> }</span>
-                                </span> 
+                            <span className="px-2 flex items-center">{m.categoryIcon} {m.nameBn} {m.today} টাকা/{  m.unit === 'kg' ? 'কেজি' : m.unit === 'litre' ? 'লিটার' : m.unit === 'dozen' ? 'ডজন' : 'পিস'}
+                                {
+                                    m.change.dir === 'down' ? <span className="flex items-center gap-0.5 ps-0.5 text-green-700"><TiArrowSortedDown />
+                                    {m.change.pct}%</span> : <span className="flex items-center gap-0.5 ps-0.5 text-red-700"><TiArrowSortedUp /> {m.change.pct}%
+                                    </span> }</span>
+                                    </span> 
                             })
                 }
             </MarqueeText>

@@ -1,16 +1,15 @@
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 
-const notFound = () => {
+const NotFound = () => {
     return (
-        <div className='min-h-[85vh]  bg-red-200 flex justify-center items-center'>
+        <div className='min-h-[85vh]  bg-green-100 flex justify-center items-center'>
             <div className='h-full my-auto flex flex-col justify-center items-center gap-3 px-4'>
                 <span className='text-8xl mb-5'>🧺</span>
                 <h4 className='text-2xl font-bold text-center'>পাতাটি খুঁজে পাওয়া যায়নি</h4>
                 <h5 className='text-center'>আপনি যে পণ্য বা পাতাটি খুঁজছেন সেটি সরানো হয়েছে বা কখনো ছিল না।</h5>
                 <div className='flex items-center gap-4'>
-                    <Link href={'/'}><Button>হোম পেজে যান</Button></Link>
-                    <Link href={'/'}><Button>বাজার তুলনা দেখুন </Button></Link>
+                    <Link href={'/'}><Button size='lg'>হোম পেজে যান</Button></Link>
                 </div>
             </div>
 
@@ -18,4 +17,4 @@ const notFound = () => {
     );
 };
 
-export default notFound;
+export default NotFound;

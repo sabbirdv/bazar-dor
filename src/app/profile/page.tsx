@@ -1,6 +1,8 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
+import { FieldError, Form, Input, Label, TextField } from '@heroui/react';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const UserProfile = () => {
@@ -8,8 +10,23 @@ const UserProfile = () => {
     const user = session?.user
     const handleSigOut = async () => {
         authClient.signOut()
+        toast.success('সফলভাবে সাইন আউট হয়েছেন');
     }
-
+    const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget);
+        const newUserData = Object.fromEntries(formData.entries()) as { name: string }
+        try {
+            await authClient.updateUser({
+                ...newUserData
+            });
+            toast.success('প্রোফাইল সফলভাবে আপডেট হয়েছে!');
+        }
+        catch (error) {
+            console.log("profile page error", error)
+            toast.error('আপডেট করতে সমস্যা হয়েছে!');
+        }
+    }
 
     return (
         <div className="min-h-screen bg-green-50 px-4 py-6">
@@ -21,7 +38,7 @@ const UserProfile = () => {
                         {user?.image ? (
                             <Image src={user.image} height={80} width={80} alt="profile" className="rounded-full object-cover"
                             />
-                            ) : ( <div className="h-20 w-20 bg-gray-200 rounded-full" />)
+                        ) : (<div className="h-20 w-20 bg-gray-200 rounded-full" />)
                         }
                         <div>
                             <h3 className="font-bold text-gray-800 capitalize">{user?.name}</h3>
@@ -32,11 +49,21 @@ const UserProfile = () => {
                 </div>
                 <div className="bg-white border border-gray-200 rounded-xl p-5">
                     <h3 className=" text-3xl font-bold text-gray-800 mb-6 ">তথ্য</h3>
-                    <form className="space-y-3 px-3">
-                        <label className="block  text-gray-700">নাম</label>
-                        <input type="text" className="input input-bordered w-full bg-white border-gray-200 outline-none" />
+                    <Form onSubmit={handleUpdateProfile} className="space-y-3 px-3">
+                        <TextField
+                            name="name"
+                            isRequired
+                            validate={(value) => {
+                                if (!value.trim()) return "নাম লিখুন";
+                                return null;
+                            }}>
+                            <Label className="label mb-1 font-bold text-black">নাম</Label>
+                            <Input
+                                type="text" className="input w-full outline-none" placeholder="যেমন: রহিম উদ্দিন" />
+                            <FieldError />
+                        </TextField>
                         <button type="submit" className="btn w-full bg-green-700 text-white border-none rounded-lg">আপডেট</button>
-                    </form>
+                    </Form>
                 </div>
             </div>
         </div>

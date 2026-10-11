@@ -3,6 +3,7 @@ import { authClient } from '@/lib/auth-client';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 const UserBtns = () => {
 
@@ -10,6 +11,7 @@ const UserBtns = () => {
     const user = session?.user
     const handleSigOut= async ()=>{
         authClient.signOut()
+        toast.success('সফলভাবে সাইন আউট হয়েছেন');
     }
     return (
         <div>
