@@ -19,8 +19,9 @@ const CategoriesDetails = async ({ params }: { params: Promise<{ categoriesId: s
 
     return (
         <div className="min-h-full">
-            <Suspense fallback></Suspense>
-            <SortCategories data={categoriesData}/>
+            <Suspense fallback={<div>লোড হচ্ছে...</div>}>
+                <SortCategories data={categoriesData}/>
+            </Suspense>
         </div>
     )
 }

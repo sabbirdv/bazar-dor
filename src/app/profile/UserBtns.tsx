@@ -1,18 +1,21 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
-import { Button, Dropdown, Label } from "@heroui/react";
 import Image from 'next/image';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { FaSortDown, FaUserAlt } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 import { TbLogout2 } from 'react-icons/tb';
+import { Button, Dropdown, Label } from "@heroui/react";
+import { FaSortDown, FaUserAlt } from 'react-icons/fa';
 
 const UserBtns = () => {
+    const router = useRouter(); 
     const { data: session } = authClient.useSession();
     const user = session?.user;
     const handleSigOut = async () => {
         await authClient.signOut();
         toast.success('সফলভাবে সাইন আউট হয়েছেন');
+        router.push('/');
     };
 
     return (

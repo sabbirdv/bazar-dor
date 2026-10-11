@@ -1,16 +1,19 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
-import { FieldError, Form, Input, Label, TextField } from '@heroui/react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
 import { TbLogout2 } from 'react-icons/tb';
+import { FieldError, Form, Input, Label, TextField } from '@heroui/react';
 
 const UserProfile = () => {
     const { data: session } = authClient.useSession();
+    const router = useRouter(); //
     const user = session?.user
     const handleSigOut = async () => {
         authClient.signOut()
         toast.success('সফলভাবে সাইন আউট হয়েছেন');
+        router.push('/');
     }
     const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
