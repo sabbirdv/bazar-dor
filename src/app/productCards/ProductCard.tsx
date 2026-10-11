@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ProductCard = ({ data }: { data: IproductType }) => {
     return (
-        <Link href={`/product/${data.slug}`}>
+        <Link href={`/product/${data.id}`}>
             <div className="w-full max-w-100 rounded-2xl border border-gray-300 hover:border-green-600 bg-white p-4">
                 <div className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-3xl">
@@ -18,9 +18,9 @@ const ProductCard = ({ data }: { data: IproductType }) => {
                         <p className="text-[13px] text-gray-500">
                             প্রতি {
                                 data.unit === 'kg' ? 'কেজি'
-                                : data.unit === 'litre' ? 'লিটার'
-                                : data.unit === 'dozen' ? 'ডজন'
-                                : 'পিস'
+                                    : data.unit === 'litre' ? 'লিটার'
+                                        : data.unit === 'dozen' ? 'ডজন'
+                                            : 'পিস'
                             }
                         </p>
                     </div>
@@ -34,11 +34,9 @@ const ProductCard = ({ data }: { data: IproductType }) => {
                         </p>
                     </div>
 
-                    <div className={`flex items-center rounded-full bg-gray-100 px-2 py-1 text-[12px] font-medium ${
-                        data.change.dir === 'down' ? 'text-green-600' : 'text-red-600'
-                    }`}>
-                        
-                        {data.change.dir === 'down' ? <TiArrowSortedDown className="text-base" /> : <TiArrowSortedUp className="text-base" />}
+                    <div className={`flex gap-1 items-center rounded-full bg-gray-100 px-2 py-1 text-[12px] font-medium 
+                    ${Number(data.change.pct) === 0 ? 'text-gray-600' : data.change.dir === 'down' ? 'text-green-600' : 'text-red-600'}`}>
+                        {Number(data.change.pct) === 0 ? <span>—</span> : data.change.dir === 'down' ? <TiArrowSortedDown className="text-base" /> : <TiArrowSortedUp className="text-base" />}
                         {data.change.pct}%
                     </div>
                 </div>

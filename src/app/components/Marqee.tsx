@@ -25,19 +25,31 @@ const Marqee = async () => {
                 duration={15}
                 pauseOnHover={true}
                 direction="right"
-                
+
             >
                 {
                     data.map((m: Imarqee) => {
-                        
+
                         return <Link href={`/product/${m.id}`} key={m.id}>
-                            <span className="px-2 flex items-center">{m.categoryIcon} {m.nameBn} {m.today} টাকা/{  m.unit === 'kg' ? 'কেজি' : m.unit === 'litre' ? 'লিটার' : m.unit === 'dozen' ? 'ডজন' : 'পিস'}
+                            <span className="px-2 flex items-center">{m.categoryIcon} {m.nameBn} {m.today} টাকা/{m.unit === 'kg' ? 'কেজি' : m.unit === 'litre' ? 'লিটার' : m.unit === 'dozen' ? 'ডজন' : 'পিস'}
                                 {
-                                    m.change.dir === 'down' ? <span className="flex items-center gap-0.5 ps-0.5 text-green-700"><TiArrowSortedDown />
-                                    {m.change.pct}%</span> : <span className="flex items-center gap-0.5 ps-0.5 text-red-700"><TiArrowSortedUp /> {m.change.pct}%
-                                    </span> }</span>
-                                    </Link> 
-                            })
+                                    m.change.dir === 'down' ? (
+                                        <span className="flex items-center gap-0.5 ps-0.5 text-green-700">
+                                            <TiArrowSortedDown /> {m.change.pct}%
+                                        </span>
+                                    ) : Number(m.change.pct) === 0 ? (
+                                        <span className="flex items-center gap-0.5 ps-0.5 text-gray-600">
+                                            — {m.change.pct}%
+                                        </span>
+                                    ) : (
+                                        <span className="flex items-center gap-0.5 ps-0.5 text-red-700">
+                                            <TiArrowSortedUp /> {m.change.pct}%
+                                        </span>
+                                    )
+                                }
+                            </span>
+                        </Link>
+                    })
                 }
             </MarqueeText>
         </div>

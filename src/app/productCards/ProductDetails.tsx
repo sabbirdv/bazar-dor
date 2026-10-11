@@ -27,14 +27,16 @@ const ProductDetails = ({ productId }: { productId: string }) => {
                         <div>
                             <h1 className="text-4xl font-bold">{data.nameBn}</h1>
                             <p className="text-gray-500">প্রতি { data.unit === 'kg' ? 'কেজি' : data.unit === 'litre' ? 'লিটার' : data.unit === 'dozen' ? 'ডজন' : 'পিস'} · {data.categoryNameBn}</p>
-                            <p className={`${data.change.dir === 'up' ? 'text-red-500' : 'text-green-500'} flex items-center mt-1`}>গতকালের তুলনায় আজ দাম {data.change.dir === 'up' ? 'বেড়েছে' : 'কমেছে'} · <span className="flex justify-center items-center"> {data.change.dir === 'up' ? <TiArrowSortedUp /> : <TiArrowSortedDown/>}{data.change.pct}%</span></p>
+                            <p className={`${Number(data.change.pct) === 0 ? 'text-gray-500' : data.change.dir === 'up' ? 'text-red-500' : 'text-green-500'} flex gap-1 items-center mt-1`}>গতকালের তুলনায় আজ দাম {Number(data.change.pct) === 0 ? '' : data.change.dir === 'up' ? 'বেড়েছে' : 'কমেছে'} · 
+                                <span className="flex justify-center items-center"> {Number(data.change.pct) === 0 ? '—' : data.change.dir === 'up' ? <TiArrowSortedUp /> : <TiArrowSortedDown />}{data.change.pct}%</span></p>
                         </div>
                     </div>
                     <div className="bg-stone-100 px-6 py-4 rounded-xl w-full text-center sm:text-right max-sm:mx-auto md:w-auto">
                         <span className="font-medium text-gray-500 block">আজকের দাম</span>
                         <span className="text-3xl font-bold">{data.today}</span>
                         <span className="text-xs text-gray-500 block">টাকা / {  data.unit === 'kg' ? 'কেজি' : data.unit === 'litre' ? 'লিটার' : data.unit === 'dozen' ? 'ডজন' : 'পিস'}</span>
-                        <span className={` ${data.change.dir === 'up' ? "text-red-500" : "text-green-500"} text-sm font-medium flex items-center justify-center`}>{data.change.dir === 'up' ? <TiArrowSortedUp className="text-sm text-red-500"/> : <TiArrowSortedDown className="text-sm text-green-500"/>} {data.change.pct}%</span>
+                        <span className={` ${Number(data.change.pct) === 0 ? 'text-gray-600' : data.change.dir === 'down' ? 'text-green-600' : 'text-red-600'} text-sm font-medium flex gap-1 items-center justify-center`}>
+                            {Number(data.change.pct) === 0 ? <span>—</span> : data.change.dir === 'down' ? <TiArrowSortedDown className="text-base" /> : <TiArrowSortedUp className="text-base" />} {data.change.pct}%</span>
                     </div>
                 </div>
 
