@@ -10,15 +10,16 @@ export async function proxy(request: NextRequest) {
     headers: await headers() 
 })
 
-const user = session?.user
+  const user = session?.user
 
 
-
-  return NextResponse.redirect(new URL('/', request.url))
+  if(!user){
+    return NextResponse.redirect(new URL('/sign-in', request.url))
+  }
 }
  
 
  
 export const config = {
-  matcher: [],
+  matcher: ['/profile' , '/product/:path'],
 }

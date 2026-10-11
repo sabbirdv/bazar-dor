@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 
     return (
         <div>
-            <Suspense fallback={<div>Loading product details...</div>}>
+            <Suspense fallback={<div>লোড হচ্ছে...</div>}>
                 <ProductDetails productId={productId} />
             </Suspense>
         </div>

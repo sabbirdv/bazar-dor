@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { Button, Form, Input, Label, TextField, FieldError } from "@heroui/react";
+import toast from "react-hot-toast";
 
 const SignUpPage = () => {
     const router = useRouter();
@@ -18,13 +19,10 @@ const SignUpPage = () => {
         })
     }
 
-
-
     const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
-
         const user = Object.fromEntries(formData.entries());
 
         const { data, error } = await authClient.signUp.email({
@@ -36,13 +34,16 @@ const SignUpPage = () => {
 
         if (data) {
             console.log(data);
+            toast.success("সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে!");
             router.push('/');
         }
 
         if (error) {
             console.log(error);
+            toast.error("অ্যাকাউন্ট তৈরি করতে সমস্যা হয়েছে! আবার চেষ্টা করুন।");
         }
     };
+
     return (
         <div className="w-full px-4">
             <div className="max-w-7xl mx-auto px-4 pt-10 flex flex-col justify-center items-center">
@@ -91,17 +92,17 @@ const SignUpPage = () => {
                             minLength={8}
                             validate={(value) => {
                                 if (value.length < 8) {
-                                    return "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে";
+                                    return "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে";
                                 }
                                 if (!/[A-Z]/.test(value)) {
-                                    return "পাসওয়ার্ডে অন্তত ১টি বড় হাতের অক্ষর থাকতে হবে";
+                                    return "পাসওয়ার্ডে অন্তত ১টি বড় হাতের অক্ষর থাকতে হবে";
                                 }
                                 if (!/[0-9]/.test(value)) {
-                                    return "পাসওয়ার্ডে অন্তত ১টি সংখ্যা থাকতে হবে";
+                                    return "পাসওয়ার্ডে অন্তত ১টি সংখ্যা থাকতে হবে";
                                 }
                                 return null;
                             }}>
-                            <Label className="label mb-1 font-bold text-black">পাসওয়ার্ড</Label>
+                            <Label className="label mb-1 font-bold text-black">পাসওয়ার্ড</Label>
                             <Input type="password" className="input w-full outline-none" placeholder="কমপক্ষে ৮ অক্ষর" />
                             <FieldError />
                         </TextField>
@@ -112,7 +113,7 @@ const SignUpPage = () => {
                         <div>
                             <div className="flex flex-nowrap justify-center items-center">
                                 <div className="w-full h-0.5 bg-gray-200"></div>
-                                <span className="text-black px-5">আথবা</span>
+                                <span className="text-black px-5">অথবা</span>
                                 <div className="w-full h-0.5 bg-gray-200"></div>
                             </div>
                             <div className="flex flex-wrap justify-center items-center gap-3 my-2">
@@ -132,15 +133,6 @@ const SignUpPage = () => {
                         </div>
                     </fieldset>
                 </Form>
-
-
-
-
-
-
-
-
-
 
                 <Link href={'/'} className="text-center py-5 text-gray-500 text-sm">← হোম পেজে ফিরে যান</Link>
             </div>
